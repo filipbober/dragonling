@@ -11,13 +11,14 @@ import SwiftUI
 struct ContentView: View {
 
     @ObservedObject private var combatListVm: CombatListViewModel = CombatListViewModel()
-
+    
     var body: some View {
         NavigationView {
             Form {
                 CombatListView(combatListViewModel: combatListVm)
             }
-        .navigationBarTitle(Text("Combat Tracker"))
+            .navigationBarTitle(Text("Combat Tracker"))
+            .navigationBarItems(trailing: EditButton())
         }
     }
 }
