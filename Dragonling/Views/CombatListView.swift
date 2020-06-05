@@ -20,7 +20,7 @@ struct CombatListView: View {
         List {
             ForEach(self.combatListVM.items, id:\.id) { item in
                 VStack {
-                    Text(item.name)
+                    CombatListCell(combatItemViewModel: item)
                 }
             }
         }
