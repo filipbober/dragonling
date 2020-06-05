@@ -14,6 +14,11 @@
 		737A027B247BDFB2006E9066 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 737A027A247BDFB2006E9066 /* Assets.xcassets */; };
 		737A027E247BDFB2006E9066 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 737A027D247BDFB2006E9066 /* Preview Assets.xcassets */; };
 		737A0281247BDFB2006E9066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 737A027F247BDFB2006E9066 /* LaunchScreen.storyboard */; };
+		737A028C247D259E006E9066 /* CombatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A028B247D259E006E9066 /* CombatItem.swift */; };
+		737A028E247D2796006E9066 /* CombatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A028D247D2796006E9066 /* CombatListViewModel.swift */; };
+		737A0290247D29E5006E9066 /* CombatItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A028F247D29E5006E9066 /* CombatItemViewModel.swift */; };
+		73994DAD247E966B000E6E1A /* CombatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73994DAC247E966B000E6E1A /* CombatListView.swift */; };
+		73F83ED824854EE300F497EC /* CombatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F83ED724854EE300F497EC /* CombatListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		737A027D247BDFB2006E9066 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		737A0280247BDFB2006E9066 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		737A0282247BDFB2006E9066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		737A028B247D259E006E9066 /* CombatItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatItem.swift; sourceTree = "<group>"; };
+		737A028D247D2796006E9066 /* CombatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListViewModel.swift; sourceTree = "<group>"; };
+		737A028F247D29E5006E9066 /* CombatItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatItemViewModel.swift; sourceTree = "<group>"; };
+		73994DAC247E966B000E6E1A /* CombatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListView.swift; sourceTree = "<group>"; };
+		73F83ED724854EE300F497EC /* CombatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +68,11 @@
 		737A0270247BDFB1006E9066 /* Dragonling */ = {
 			isa = PBXGroup;
 			children = (
+				737A0288247BE822006E9066 /* Views */,
+				737A028A247BE836006E9066 /* ViewModels */,
+				737A0289247BE82E006E9066 /* Models */,
 				737A0271247BDFB1006E9066 /* AppDelegate.swift */,
 				737A0273247BDFB1006E9066 /* SceneDelegate.swift */,
-				737A0278247BDFB1006E9066 /* ContentView.swift */,
 				737A027A247BDFB2006E9066 /* Assets.xcassets */,
 				737A027F247BDFB2006E9066 /* LaunchScreen.storyboard */,
 				737A0282247BDFB2006E9066 /* Info.plist */,
@@ -76,6 +88,33 @@
 				737A027D247BDFB2006E9066 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		737A0288247BE822006E9066 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				737A0278247BDFB1006E9066 /* ContentView.swift */,
+				73994DAC247E966B000E6E1A /* CombatListView.swift */,
+				73F83ED724854EE300F497EC /* CombatListCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		737A0289247BE82E006E9066 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				737A028B247D259E006E9066 /* CombatItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		737A028A247BE836006E9066 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				737A028D247D2796006E9066 /* CombatListViewModel.swift */,
+				737A028F247D29E5006E9066 /* CombatItemViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +190,12 @@
 			files = (
 				737A0272247BDFB1006E9066 /* AppDelegate.swift in Sources */,
 				737A0277247BDFB1006E9066 /* Dragonling.xcdatamodeld in Sources */,
+				737A0290247D29E5006E9066 /* CombatItemViewModel.swift in Sources */,
 				737A0279247BDFB1006E9066 /* ContentView.swift in Sources */,
+				73994DAD247E966B000E6E1A /* CombatListView.swift in Sources */,
+				73F83ED824854EE300F497EC /* CombatListCell.swift in Sources */,
+				737A028C247D259E006E9066 /* CombatItem.swift in Sources */,
+				737A028E247D2796006E9066 /* CombatListViewModel.swift in Sources */,
 				737A0274247BDFB1006E9066 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +337,7 @@
 				DEVELOPMENT_TEAM = 65R8GFFDB8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Dragonling/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +358,7 @@
 				DEVELOPMENT_TEAM = 65R8GFFDB8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Dragonling/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
