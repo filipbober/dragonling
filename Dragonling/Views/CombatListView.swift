@@ -14,6 +14,7 @@ struct CombatListView: View {
 
     init(combatListViewModel: CombatListViewModel) {
         self.combatListVM = combatListViewModel
+        
     }
 
     var body: some View {
@@ -28,14 +29,16 @@ struct CombatListView: View {
         }
     }
 
-    func delete(at offsets: IndexSet) {
-        if let first = offsets.first {
-            self.combatListVM.items.remove(at: first)
-        }
+    private func delete(at offsets: IndexSet) {
+        self.combatListVM.remove(at: offsets)
     }
 
-    func move(from source: IndexSet, to destination: Int) {
-        self.combatListVM.items.move(fromOffsets: source, toOffset: destination)
+    private func move(from source: IndexSet, to destination: Int) {
+        self.combatListVM.move(from: source, to: destination)
+    }
+
+    private func add() {
+        self.combatListVM.add()
     }
 
 }

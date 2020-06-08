@@ -10,6 +10,7 @@ import Foundation
 
 struct CombatItem: Identifiable {
     let id = UUID()
+    //let order: Int
     let name: String
 }
 
@@ -19,7 +20,15 @@ extension CombatItem {
             CombatItem(name: "Goblin"),
             CombatItem(name: "Dragon"),
             CombatItem(name: "Skeleton"),
-            CombatItem(name: "Lich")
+            CombatItem(name: "Lich"),
+            CombatItem(name: "Orc"),
+            CombatItem(name: "Elf"),
+            CombatItem(name: "Dwarf"),
+            CombatItem(name: "Tiefling"),
+            CombatItem(name: "Dragonborn"),
+            CombatItem(name: "Beast"),
+            CombatItem(name: "Aboleth"),
+            CombatItem(name: "Mind Flyer")
         ]
     }
 }

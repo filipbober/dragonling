@@ -16,6 +16,20 @@ final class CombatListViewModel: ObservableObject {
         loadItems()
     }
 
+    func add() {
+        items.append(CombatItemViewModel(item: CombatItem(name: "New monster")))
+    }
+
+    func move(from source: IndexSet, to destination: Int) {
+        items.move(fromOffsets: source, toOffset: destination)
+    }
+
+    func remove(at offsets: IndexSet) {
+        if let first = offsets.first {
+            self.items.remove(at: first)
+        }
+    }
+
     func loadItems() {
         let items = CombatItem.all()
         self.items = items.map(CombatItemViewModel.init)

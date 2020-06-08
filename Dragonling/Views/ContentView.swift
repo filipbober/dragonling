@@ -10,18 +10,51 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @ObservedObject private var combatListVm: CombatListViewModel = CombatListViewModel()
+    @ObservedObject private var combatListVM: CombatListViewModel = CombatListViewModel()
+    @State private var editMode = EditMode.inactive
     
     var body: some View {
-        NavigationView {
-            Form {
-                CombatListView(combatListViewModel: combatListVm)
+
+        ZStack(alignment: .top) {
+
+            NavigationView {
+                Form {
+                    CombatListView(combatListViewModel: combatListVM)
+                }
+                .navigationBarTitle(Text("Combat Tracker"))
+                .navigationBarItems(leading: addButton, trailing: EditButton())
+                .environment(\.editMode, $editMode)
             }
-            .navigationBarTitle(Text("Combat Tracker"))
-            .navigationBarItems(trailing: EditButton())
+            VStack {
+                editTitle
+            }
         }
     }
+
+    private var editTitle: some View {
+        Group {
+            if editMode == .active {
+                Text("Edit")
+                    .font(.headline)
+                    .padding()
+            }
+        }
+    }
+
+    private var addButton: some View {
+        // Better performance than embedding in AnyView
+        Group {
+            if editMode == .active {
+                Button(action: onAdd) { Image(systemName: "plus") }
+            }
+        }
+    }
+
+    private func onAdd() {
+        combatListVM.add()
+    }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
