@@ -9,13 +9,19 @@
 import SwiftUI
 
 struct CombatItemDetailView: View {
+
+    let combatItemDetailVM: CombatItemDetailViewModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(combatItemDetailVM.name)
+            Text("This is detail view")
+        }
     }
 }
 
 struct CombatItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CombatItemDetailView()
+        CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: CombatItem(name: "Goblin")))
     }
 }

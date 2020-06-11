@@ -21,8 +21,13 @@ struct CombatListView: View {
         List {
             ForEach(self.combatListVM.items, id:\.id) { item in
                 VStack {
-                    CombatListCell(combatListCellVM: item)
+                    //CombatListCell(combatListCellVM: item)
+                    NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: item.item)))
+                    {
+                        CombatListCell(combatListCellVM: item)
+                    }
                 }
+
             }
             .onDelete(perform: delete)
             .onMove(perform: move)

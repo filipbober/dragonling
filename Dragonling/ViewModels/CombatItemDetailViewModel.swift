@@ -1,16 +1,16 @@
 //
-//  CombatItemViewModel.swift
+//  CombatItemDetailViewModel.swift
 //  Dragonling
 //
-//  Created by Filip Bober on 2020-05-26.
+//  Created by Filip Bober on 2020-06-11.
 //  Copyright © 2020 Filip Cyrus Bober. All rights reserved.
 //
 
 import Foundation
 
-final class CombatListCellViewModel {
+final class CombatItemDetailViewModel: ObservableObject {
 
-    @Published var item: CombatItem
+    let item: CombatItem
 
     init(item: CombatItem) {
         self.item = item

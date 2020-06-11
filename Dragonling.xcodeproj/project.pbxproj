@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7355850D249233D400B0AD9A /* CombatItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355850C249233D400B0AD9A /* CombatItemDetailView.swift */; };
+		7355850F2492396100B0AD9A /* CombatItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355850E2492396100B0AD9A /* CombatItemDetailViewModel.swift */; };
 		737A0272247BDFB1006E9066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A0271247BDFB1006E9066 /* AppDelegate.swift */; };
 		737A0274247BDFB1006E9066 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A0273247BDFB1006E9066 /* SceneDelegate.swift */; };
 		737A0277247BDFB1006E9066 /* Dragonling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 737A0275247BDFB1006E9066 /* Dragonling.xcdatamodeld */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		7355850C249233D400B0AD9A /* CombatItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatItemDetailView.swift; sourceTree = "<group>"; };
+		7355850E2492396100B0AD9A /* CombatItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatItemDetailViewModel.swift; sourceTree = "<group>"; };
 		737A026E247BDFB1006E9066 /* Dragonling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dragonling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		737A0271247BDFB1006E9066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		737A0273247BDFB1006E9066 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				737A028D247D2796006E9066 /* CombatListViewModel.swift */,
 				737A028F247D29E5006E9066 /* CombatListCellViewModel.swift */,
+				7355850E2492396100B0AD9A /* CombatItemDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				737A028E247D2796006E9066 /* CombatListViewModel.swift in Sources */,
 				7355850D249233D400B0AD9A /* CombatItemDetailView.swift in Sources */,
 				737A0274247BDFB1006E9066 /* SceneDelegate.swift in Sources */,
+				7355850F2492396100B0AD9A /* CombatItemDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
