@@ -10,16 +10,16 @@ import SwiftUI
 
 struct CombatListCell: View {
 
-    let combatItemViewModel: CombatItemViewModel
+    let combatListCellVM: CombatListCellViewModel
 
     var body: some View {
-        Text(combatItemViewModel.name)
+        Text(combatListCellVM.name)
     }
 }
 
 struct CombatListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CombatListCell(combatItemViewModel: CombatItemViewModel(item: CombatItem(name: "Test name")))
+        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name")))
             .previewLayout(.sizeThatFits)
     }
 }

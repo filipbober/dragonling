@@ -10,14 +10,14 @@ import Foundation
 
 final class CombatListViewModel: ObservableObject {
 
-    @Published var items = [CombatItemViewModel]()
+    @Published var items = [CombatListCellViewModel]()
 
     init() {
         loadItems()
     }
 
     func add() {
-        items.append(CombatItemViewModel(item: CombatItem(name: "New monster")))
+        items.append(CombatListCellViewModel(item: CombatItem(name: "New monster")))
     }
 
     func move(from source: IndexSet, to destination: Int) {
@@ -32,6 +32,6 @@ final class CombatListViewModel: ObservableObject {
 
     func loadItems() {
         let items = CombatItem.all()
-        self.items = items.map(CombatItemViewModel.init)
+        self.items = items.map(CombatListCellViewModel.init)
     }
 }

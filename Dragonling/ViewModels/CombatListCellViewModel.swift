@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class CombatItemViewModel {
+final class CombatListCellViewModel {
 
     let item: CombatItem
 

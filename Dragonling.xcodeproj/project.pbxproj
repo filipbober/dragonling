@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7355850D249233D400B0AD9A /* CombatItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355850C249233D400B0AD9A /* CombatItemDetailView.swift */; };
 		737A0272247BDFB1006E9066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A0271247BDFB1006E9066 /* AppDelegate.swift */; };
 		737A0274247BDFB1006E9066 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A0273247BDFB1006E9066 /* SceneDelegate.swift */; };
 		737A0277247BDFB1006E9066 /* Dragonling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 737A0275247BDFB1006E9066 /* Dragonling.xcdatamodeld */; };
@@ -16,12 +17,13 @@
 		737A0281247BDFB2006E9066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 737A027F247BDFB2006E9066 /* LaunchScreen.storyboard */; };
 		737A028C247D259E006E9066 /* CombatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A028B247D259E006E9066 /* CombatItem.swift */; };
 		737A028E247D2796006E9066 /* CombatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A028D247D2796006E9066 /* CombatListViewModel.swift */; };
-		737A0290247D29E5006E9066 /* CombatItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A028F247D29E5006E9066 /* CombatItemViewModel.swift */; };
+		737A0290247D29E5006E9066 /* CombatListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A028F247D29E5006E9066 /* CombatListCellViewModel.swift */; };
 		73994DAD247E966B000E6E1A /* CombatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73994DAC247E966B000E6E1A /* CombatListView.swift */; };
 		73F83ED824854EE300F497EC /* CombatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F83ED724854EE300F497EC /* CombatListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7355850C249233D400B0AD9A /* CombatItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatItemDetailView.swift; sourceTree = "<group>"; };
 		737A026E247BDFB1006E9066 /* Dragonling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dragonling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		737A0271247BDFB1006E9066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		737A0273247BDFB1006E9066 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +35,7 @@
 		737A0282247BDFB2006E9066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		737A028B247D259E006E9066 /* CombatItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatItem.swift; sourceTree = "<group>"; };
 		737A028D247D2796006E9066 /* CombatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListViewModel.swift; sourceTree = "<group>"; };
-		737A028F247D29E5006E9066 /* CombatItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatItemViewModel.swift; sourceTree = "<group>"; };
+		737A028F247D29E5006E9066 /* CombatListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListCellViewModel.swift; sourceTree = "<group>"; };
 		73994DAC247E966B000E6E1A /* CombatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListView.swift; sourceTree = "<group>"; };
 		73F83ED724854EE300F497EC /* CombatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 				737A0278247BDFB1006E9066 /* ContentView.swift */,
 				73994DAC247E966B000E6E1A /* CombatListView.swift */,
 				73F83ED724854EE300F497EC /* CombatListCell.swift */,
+				7355850C249233D400B0AD9A /* CombatItemDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				737A028D247D2796006E9066 /* CombatListViewModel.swift */,
-				737A028F247D29E5006E9066 /* CombatItemViewModel.swift */,
+				737A028F247D29E5006E9066 /* CombatListCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -190,12 +193,13 @@
 			files = (
 				737A0272247BDFB1006E9066 /* AppDelegate.swift in Sources */,
 				737A0277247BDFB1006E9066 /* Dragonling.xcdatamodeld in Sources */,
-				737A0290247D29E5006E9066 /* CombatItemViewModel.swift in Sources */,
+				737A0290247D29E5006E9066 /* CombatListCellViewModel.swift in Sources */,
 				737A0279247BDFB1006E9066 /* ContentView.swift in Sources */,
 				73994DAD247E966B000E6E1A /* CombatListView.swift in Sources */,
 				73F83ED824854EE300F497EC /* CombatListCell.swift in Sources */,
 				737A028C247D259E006E9066 /* CombatItem.swift in Sources */,
 				737A028E247D2796006E9066 /* CombatListViewModel.swift in Sources */,
+				7355850D249233D400B0AD9A /* CombatItemDetailView.swift in Sources */,
 				737A0274247BDFB1006E9066 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

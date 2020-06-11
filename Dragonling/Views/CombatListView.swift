@@ -21,7 +21,7 @@ struct CombatListView: View {
         List {
             ForEach(self.combatListVM.items, id:\.id) { item in
                 VStack {
-                    CombatListCell(combatItemViewModel: item)
+                    CombatListCell(combatListCellVM: item)
                 }
             }
             .onDelete(perform: delete)
