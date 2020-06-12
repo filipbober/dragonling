@@ -25,19 +25,6 @@ struct ContentView: View {
                 .navigationBarItems(leading: addButton, trailing: EditButton())
                 .environment(\.editMode, $editMode)
             }
-            VStack {
-                editTitle
-            }
-        }
-    }
-
-    private var editTitle: some View {
-        Group {
-            if editMode == .active {
-                Text("Edit")
-                    .font(.headline)
-                    .padding()
-            }
         }
     }
 
