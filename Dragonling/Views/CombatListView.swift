@@ -21,16 +21,21 @@ struct CombatListView: View {
         List {
             ForEach(self.combatListVM.items, id:\.id) { item in
                 VStack {
-                    //CombatListCell(combatListCellVM: item)
                     NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: item.item)))
                     {
                         CombatListCell(combatListCellVM: item)
                     }
                 }
-
             }
             .onDelete(perform: delete)
             .onMove(perform: move)
+
+            Button(action: {
+                self.combatListVM.currentTurn += 1
+            }) {
+                Text("Next turn")
+                    .foregroundColor(.blue)
+            }
         }
     }
 
@@ -44,6 +49,10 @@ struct CombatListView: View {
 
     private func add() {
         self.combatListVM.add()
+    }
+
+    private func nextTurn() {
+
     }
 
 }

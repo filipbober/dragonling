@@ -15,16 +15,14 @@ struct ContentView: View {
     
     var body: some View {
 
-        ZStack(alignment: .top) {
-
-            NavigationView {
-                Form {
-                    CombatListView(combatListViewModel: combatListVM)
-                }
-                .navigationBarTitle(Text("Combat Tracker"))
-                .navigationBarItems(leading: addButton, trailing: EditButton())
-                .environment(\.editMode, $editMode)
+        NavigationView {
+            Form {
+                Text("Current turn: \(combatListVM.currentTurn)")
+                CombatListView(combatListViewModel: combatListVM)
             }
+            .navigationBarTitle(Text("Combat Tracker"))
+            .navigationBarItems(leading: addButton, trailing: EditButton())
+            .environment(\.editMode, $editMode)
         }
     }
 
