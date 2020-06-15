@@ -19,7 +19,7 @@ final class CombatListViewModel: ObservableObject {
     }
 
     func add() {
-        items.append(CombatListCellViewModel(item: CombatItem(name: "New monster")))
+        items.append(CombatListCellViewModel(item: CombatItem(name: "New monster"), active: false))
     }
 
     func move(from source: IndexSet, to destination: Int) {
@@ -36,8 +36,7 @@ final class CombatListViewModel: ObservableObject {
         self.currentTurn = 1
 
         let items = CombatItem.all()
-        self.items = items.map(CombatListCellViewModel.init)
-
-        currentEntityId = self.items.first?.id
+        currentEntityId = items.first?.id
+        self.items = items.map() { CombatListCellViewModel.init(item: $0, active: $0.id == currentEntityId) }
     }
 }

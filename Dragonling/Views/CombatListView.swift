@@ -52,9 +52,9 @@ struct CombatListView: View {
 
     private func createCombatListCell(for item: CombatListCellViewModel) -> some View  {
         if self.combatListVM.currentEntityId == item.id {
-            return CombatListCell(combatListCellVM: item, active: true)
+            return CombatListCell(combatListCellVM: item)
         } else {
-            return CombatListCell(combatListCellVM: item, active: false)
+            return CombatListCell(combatListCellVM: item)
         }
     }
 

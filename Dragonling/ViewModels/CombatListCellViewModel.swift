@@ -11,9 +11,11 @@ import Foundation
 final class CombatListCellViewModel {
 
     @Published var item: CombatItem
+    @Published var active: Bool
 
-    init(item: CombatItem) {
+    init(item: CombatItem, active: Bool) {
         self.item = item
+        self.active = active
     }
 
     var id: UUID {

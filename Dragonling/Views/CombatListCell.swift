@@ -11,7 +11,6 @@ import SwiftUI
 struct CombatListCell: View {
 
     let combatListCellVM: CombatListCellViewModel
-    @State var active: Bool
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -22,11 +21,14 @@ struct CombatListCell: View {
 
     var EndTurnButton: some View {
         Group {
-            if active {
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            if self.combatListCellVM.active {
+                Button(action: {
+                    print("End turn button clicked")
+                }) {
                     Text("End turn")
                 }
                 .foregroundColor(.blue)
+                .buttonStyle(BorderlessButtonStyle())
             }
         }
     }
@@ -35,7 +37,7 @@ struct CombatListCell: View {
 
 struct CombatListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name")), active: true)
+        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name"), active: true))
             .previewLayout(.sizeThatFits)
     }
 }
