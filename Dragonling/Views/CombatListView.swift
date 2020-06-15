@@ -14,7 +14,6 @@ struct CombatListView: View {
 
     init(combatListViewModel: CombatListViewModel) {
         self.combatListVM = combatListViewModel
-        
     }
 
     var body: some View {
@@ -23,7 +22,7 @@ struct CombatListView: View {
                 VStack {
                     NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: item.item)))
                     {
-                        CombatListCell(combatListCellVM: item)
+                        self.createCombatListCell(for: item)
                     }
                 }
             }
@@ -49,6 +48,14 @@ struct CombatListView: View {
 
     private func add() {
         self.combatListVM.add()
+    }
+
+    private func createCombatListCell(for item: CombatListCellViewModel) -> some View  {
+        if self.combatListVM.currentEntityId == item.id {
+            return CombatListCell(combatListCellVM: item, active: true)
+        } else {
+            return CombatListCell(combatListCellVM: item, active: false)
+        }
     }
 
     private func nextTurn() {

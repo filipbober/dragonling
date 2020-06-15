@@ -15,6 +15,13 @@ struct ContentView: View {
     
     var body: some View {
 
+        // Add 'End turn' button under current item
+        // Disable Next Turn button until all entities ended turn
+        // track order in the list - highlight current item
+        // should work after Edit -> Move reordered items
+        //      highest initiative should be highlighted
+        // Make 'Current Turn' sticky at the top
+
         NavigationView {
             Form {
                 Text("Current turn: \(combatListVM.currentTurn)")

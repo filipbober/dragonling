@@ -11,6 +11,7 @@ import Foundation
 final class CombatListViewModel: ObservableObject {
 
     @Published var currentTurn: Int = 1
+    @Published var currentEntityId: UUID?
     @Published var items = [CombatListCellViewModel]()
 
     init() {
@@ -36,5 +37,7 @@ final class CombatListViewModel: ObservableObject {
 
         let items = CombatItem.all()
         self.items = items.map(CombatListCellViewModel.init)
+
+        currentEntityId = self.items.first?.id
     }
 }

@@ -12,6 +12,7 @@ struct CombatItem: Identifiable {
     let id = UUID()
     //let order: Int
     let name: String
+    //let active: Bool
 }
 
 extension CombatItem {
