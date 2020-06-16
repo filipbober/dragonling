@@ -23,6 +23,7 @@ struct CombatListView: View {
                     NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: item.item)))
                     {
                         self.createCombatListCell(for: item)
+                        //CombatListCell(combatListCellVM: item)
                     }
                 }
             }
@@ -51,11 +52,26 @@ struct CombatListView: View {
     }
 
     private func createCombatListCell(for item: CombatListCellViewModel) -> some View  {
-        if self.combatListVM.currentEntityId == item.id {
-            return CombatListCell(combatListCellVM: item)
-        } else {
-            return CombatListCell(combatListCellVM: item)
+
+        item.active = combatListVM.currentEntityId == item.id ? true : false
+        return CombatListCell(combatListCellVM: item, endTurnAction: endTurn)
+
+//        if self.combatListVM.currentEntityId == item.id {
+//            item.active = true
+//            return CombatListCell(combatListCellVM: item)
+//        } else {
+//            item.active = false
+//            return CombatListCell(combatListCellVM: item)
+//        }
+    }
+
+    private func endTurn() {
+        combatListVM.currentItemIndex += 1
+        if combatListVM.currentItemIndex >= combatListVM.items.count {
+            combatListVM.currentItemIndex = 0
         }
+
+        combatListVM.currentEntityId = combatListVM.items[combatListVM.currentItemIndex].id
     }
 
     private func nextTurn() {

@@ -22,6 +22,8 @@ struct ContentView: View {
         //      highest initiative should be highlighted
         // Make 'Current Turn' sticky at the top
 
+        // Add 'activated' field to Entity to track if it has moved already this turn
+
         NavigationView {
             Form {
                 Text("Current turn: \(combatListVM.currentTurn)")
