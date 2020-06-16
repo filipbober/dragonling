@@ -26,8 +26,8 @@ struct CombatListCell: View {
                 Button(action: self.endTurnAction) {
                     Text("End turn")
                 }
-                .foregroundColor(.blue)
-                .buttonStyle(BorderlessButtonStyle())
+                    .accentColor(.blue)
+                    .buttonStyle(BorderlessButtonStyle())
             }
         }
     }

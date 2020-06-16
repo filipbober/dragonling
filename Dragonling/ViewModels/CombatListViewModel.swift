@@ -40,7 +40,19 @@ final class CombatListViewModel: ObservableObject {
         }
     }
 
+    func allActivated() -> Bool {
+        for item in items {
+            if !item.hasActivated {
+                return false
+            }
+        }
+
+        return true
+    }
+
     func endTurn() {
+        self.items[self.currentItemIndex].hasActivated = true
+
         self.currentItemIndex += 1
         if self.currentItemIndex >= self.items.count {
             self.currentItemIndex = 0

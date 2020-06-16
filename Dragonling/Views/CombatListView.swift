@@ -36,8 +36,9 @@ struct CombatListView: View {
                 self.combatListVM.currentTurn += 1
             }) {
                 Text("Next turn")
-                    .foregroundColor(.blue)
+                    .accentColor(.blue)
             }
+            .disabled(!self.combatListVM.allActivated())
         }
     }
 
@@ -58,7 +59,7 @@ struct CombatListView: View {
     }
 
     private func nextTurn() {
-
+        // Reset activated
     }
 
 }
