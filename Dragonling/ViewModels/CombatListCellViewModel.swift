@@ -12,6 +12,7 @@ final class CombatListCellViewModel {
 
     @Published var item: CombatItem
     @Published var active: Bool
+    @Published var hasActivated: Bool = false
 
     init(item: CombatItem, active: Bool) {
         self.item = item

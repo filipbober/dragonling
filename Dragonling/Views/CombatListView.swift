@@ -14,6 +14,9 @@ struct CombatListView: View {
 
     init(combatListViewModel: CombatListViewModel) {
         self.combatListVM = combatListViewModel
+
+        // Will refresh every time the View is rebuilt - when ObservedObject changes
+        combatListVM.refreshActiveItems()
     }
 
     var body: some View {
@@ -22,8 +25,7 @@ struct CombatListView: View {
                 VStack {
                     NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: item.item)))
                     {
-                        self.createCombatListCell(for: item)
-                        //CombatListCell(combatListCellVM: item)
+                        CombatListCell(combatListCellVM: item, endTurnAction: self.endTurn)
                     }
                 }
             }
@@ -51,27 +53,8 @@ struct CombatListView: View {
         self.combatListVM.add()
     }
 
-    private func createCombatListCell(for item: CombatListCellViewModel) -> some View  {
-
-        item.active = combatListVM.currentEntityId == item.id ? true : false
-        return CombatListCell(combatListCellVM: item, endTurnAction: endTurn)
-
-//        if self.combatListVM.currentEntityId == item.id {
-//            item.active = true
-//            return CombatListCell(combatListCellVM: item)
-//        } else {
-//            item.active = false
-//            return CombatListCell(combatListCellVM: item)
-//        }
-    }
-
     private func endTurn() {
-        combatListVM.currentItemIndex += 1
-        if combatListVM.currentItemIndex >= combatListVM.items.count {
-            combatListVM.currentItemIndex = 0
-        }
-
-        combatListVM.currentEntityId = combatListVM.items[combatListVM.currentItemIndex].id
+        combatListVM.endTurn()
     }
 
     private func nextTurn() {

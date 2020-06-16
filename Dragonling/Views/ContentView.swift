@@ -24,6 +24,9 @@ struct ContentView: View {
 
         // Add 'activated' field to Entity to track if it has moved already this turn
 
+        // Add 'wait' along with End Turn button - wait changes to end turn when all
+        // other entities moved
+
         NavigationView {
             Form {
                 Text("Current turn: \(combatListVM.currentTurn)")
