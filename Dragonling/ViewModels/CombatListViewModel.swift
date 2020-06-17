@@ -35,8 +35,15 @@ final class CombatListViewModel: ObservableObject {
     }
 
     func refreshActiveItems() {
-        for item in items {
-            item.active = self.currentEntityId == item.id ? true : false
+        // If all entities had action disable active and wait till end turn is pressed
+        if allActivated() {
+            for item in items {
+                item.active = false
+            }
+        } else {
+            for item in items {
+                item.active = self.currentEntityId == item.id ? true : false
+            }
         }
     }
 
@@ -59,6 +66,15 @@ final class CombatListViewModel: ObservableObject {
         }
 
         self.currentEntityId = self.items[self.currentItemIndex].id
+    }
+
+    func nextTurn() {
+        self.currentTurn += 1
+
+        // Reset activated
+        for item in items {
+            item.hasActivated = false
+        }
     }
 
     func loadItems() {

@@ -11,7 +11,7 @@ import SwiftUI
 struct CombatListCell: View {
 
     let combatListCellVM: CombatListCellViewModel
-    var endTurnAction: () -> Void
+    let endTurnAction: () -> Void
 
     var body: some View {
         VStack(alignment: .leading) {

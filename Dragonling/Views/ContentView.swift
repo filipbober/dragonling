@@ -15,8 +15,8 @@ struct ContentView: View {
     
     var body: some View {
 
-        // Add 'End turn' button under current item
-        // Disable Next Turn button until all entities ended turn
+        // done - Add 'End turn' button under current item
+        // done -  Disable Next Turn button until all entities ended turn
         // track order in the list - highlight current item
         // should work after Edit -> Move reordered items
         //      highest initiative should be highlighted
@@ -26,6 +26,11 @@ struct ContentView: View {
 
         // Add 'wait' along with End Turn button - wait changes to end turn when all
         // other entities moved
+
+        // scroll to current element or next turn if all have been activated
+        // mark activated items with separate color
+
+        // move functions in views to extension - to better separate?
 
         NavigationView {
             Form {

@@ -33,7 +33,7 @@ struct CombatListView: View {
             .onMove(perform: move)
 
             Button(action: {
-                self.combatListVM.currentTurn += 1
+                self.nextTurn()
             }) {
                 Text("Next turn")
                     .accentColor(.blue)
@@ -55,11 +55,11 @@ struct CombatListView: View {
     }
 
     private func endTurn() {
-        combatListVM.endTurn()
+        self.combatListVM.endTurn()
     }
 
     private func nextTurn() {
-        // Reset activated
+        self.combatListVM.nextTurn()
     }
 
 }
