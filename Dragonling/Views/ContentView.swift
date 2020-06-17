@@ -32,6 +32,8 @@ struct ContentView: View {
 
         // move functions in views to extension - to better separate?
 
+        // BUG - why doesnt update and refresh work in the same function?
+
         NavigationView {
             Form {
                 Text("Current turn: \(combatListVM.currentTurn)")

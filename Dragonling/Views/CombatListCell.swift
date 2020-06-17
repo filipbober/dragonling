@@ -16,6 +16,7 @@ struct CombatListCell: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(combatListCellVM.name)
+            Text("Has activated: \(String(combatListCellVM.hasActivated))")
             HStack {
                 EndTurnButton
                 Spacer()

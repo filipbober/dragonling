@@ -14,34 +14,65 @@ final class CombatListViewModel: ObservableObject {
     @Published var currentEntityId: UUID?
     @Published var items = [CombatListCellViewModel]()
 
+    //private var currentEntityId: UUID?
     private var currentItemIndex = 0
 
     init() {
         loadItems()
+        updateCurrentItem()
+        refreshActiveItems()
     }
 
     func add() {
         items.append(CombatListCellViewModel(item: CombatItem(name: "New monster"), active: false))
+
+        updateCurrentItem()
+        refreshActiveItems()
     }
 
     func move(from source: IndexSet, to destination: Int) {
         items.move(fromOffsets: source, toOffset: destination)
+
+        updateCurrentItem()
+        refreshActiveItems()
     }
 
     func remove(at offsets: IndexSet) {
         if let first = offsets.first {
             self.items.remove(at: first)
         }
+
+        updateCurrentItem()
+        refreshActiveItems()
+    }
+
+    func updateCurrentItem() {
+        // Current item is first active and not waiting from the list
+        var index = 0
+        for item in self.items {
+            if !item.hasActivated {
+                currentItemIndex = index
+                break
+            }
+            
+            index += 1
+        }
+
+        if (items.count > 0) {
+            currentEntityId = items[currentItemIndex].id
+        } else {
+            currentEntityId = nil
+        }
     }
 
     func refreshActiveItems() {
         // If all entities had action disable active and wait till end turn is pressed
         if allActivated() {
-            for item in items {
+            for item in self.items {
                 item.active = false
             }
         } else {
-            for item in items {
+            for item in self.items {
                 item.active = self.currentEntityId == item.id ? true : false
             }
         }
@@ -65,7 +96,8 @@ final class CombatListViewModel: ObservableObject {
             self.currentItemIndex = 0
         }
 
-        self.currentEntityId = self.items[self.currentItemIndex].id
+        updateCurrentItem()
+        refreshActiveItems()
     }
 
     func nextTurn() {
@@ -75,10 +107,14 @@ final class CombatListViewModel: ObservableObject {
         for item in items {
             item.hasActivated = false
         }
+
+        updateCurrentItem()
+        refreshActiveItems()
     }
 
     func sortItemsByInitiative() {
-        self.items = self.items.sorted().reversed()
+        self.items = self.items.sorted()
+        updateCurrentItem()
     }
 
     func loadItems() {
@@ -101,6 +137,5 @@ final class CombatListViewModel: ObservableObject {
 
         // Set current turn to the first item - the one with highest initiative
         sortItemsByInitiative()
-        currentEntityId = self.items.first?.id
     }
 }

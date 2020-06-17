@@ -31,7 +31,7 @@ final class CombatListCellViewModel {
 
 extension CombatListCellViewModel: Comparable {
     static func < (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
-        return lhs.item.initiative < rhs.item.initiative
+        return lhs.item.initiative > rhs.item.initiative
     }
 
     static func == (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
