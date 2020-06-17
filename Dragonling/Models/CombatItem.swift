@@ -13,6 +13,7 @@ struct CombatItem: Identifiable {
     //let order: Int
     let name: String
     //let active: Bool
+    var initiative: Int = 0
 }
 
 extension CombatItem {

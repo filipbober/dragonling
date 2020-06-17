@@ -77,15 +77,27 @@ final class CombatListViewModel: ObservableObject {
         }
     }
 
+    func sortItemsByInitiative() {
+        self.items = self.items.sorted().reversed()
+    }
+
     func loadItems() {
         self.currentTurn = 1
 
         // Load example items
         let items = CombatItem.all()
 
-        // Set current turn to the first item
-        currentEntityId = items.first?.id
-        
-        self.items = items.map() { CombatListCellViewModel.init(item: $0, active: $0.id == currentEntityId) }
+        // Set initiative
+        var currentInitiative = 1
+        for var item in items {
+            item.initiative = currentInitiative
+            currentInitiative += 1
+        }
+
+        self.items = items.map() { CombatListCellViewModel.init(item: $0, active: false) }
+
+        // Set current turn to the first item - the one with highest initiative
+        sortItemsByInitiative()
+        currentEntityId = self.items.first?.id
     }
 }

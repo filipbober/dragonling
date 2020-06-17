@@ -13,6 +13,7 @@ final class CombatListCellViewModel {
     @Published var item: CombatItem
     @Published var active: Bool
     @Published var hasActivated: Bool = false
+    // @Published var isWaiting: Bool = false
 
     init(item: CombatItem, active: Bool) {
         self.item = item
@@ -25,5 +26,15 @@ final class CombatListCellViewModel {
 
     var name: String {
         return self.item.name.capitalized
+    }
+}
+
+extension CombatListCellViewModel: Comparable {
+    static func < (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
+        return lhs.item.initiative < rhs.item.initiative
+    }
+
+    static func == (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
+        return lhs.item.id == rhs.item.id
     }
 }
