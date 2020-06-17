@@ -87,14 +87,17 @@ final class CombatListViewModel: ObservableObject {
         // Load example items
         let items = CombatItem.all()
 
-        // Set initiative
+        self.items = items.map() { CombatListCellViewModel.init(item: $0, active: false) }
+
+        // Set some values to initiative
         var currentInitiative = 1
-        for var item in items {
-            item.initiative = currentInitiative
+        self.items.forEach {
+            $0.item.initiative = currentInitiative
             currentInitiative += 1
         }
+        // Make one first and last item have the same initiative - for testing purposes
+        self.items[self.items.count - 1].item.initiative = 1
 
-        self.items = items.map() { CombatListCellViewModel.init(item: $0, active: false) }
 
         // Set current turn to the first item - the one with highest initiative
         sortItemsByInitiative()

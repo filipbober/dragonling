@@ -16,7 +16,11 @@ struct CombatListCell: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(combatListCellVM.name)
-            EndTurnButton
+            HStack {
+                EndTurnButton
+                Spacer()
+                Text("Initiative: \(combatListCellVM.item.initiative)")
+            }
         }
     }
 
@@ -26,8 +30,8 @@ struct CombatListCell: View {
                 Button(action: self.endTurnAction) {
                     Text("End turn")
                 }
-                    .accentColor(.blue)
-                    .buttonStyle(BorderlessButtonStyle())
+                .accentColor(.blue)
+                .buttonStyle(BorderlessButtonStyle())
             }
         }
     }
