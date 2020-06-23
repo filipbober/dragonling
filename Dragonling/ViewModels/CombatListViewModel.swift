@@ -12,7 +12,8 @@ final class CombatListViewModel: ObservableObject {
 
     @Published var currentTurn: Int = 1
     @Published var currentEntityId: UUID?
-    @Published var items = [CombatListCellViewModel]()
+    // Should this be private?
+    @Published private(set) var items = [CombatListCellViewModel]()
 
     private var currentItemIndex = 0
 
@@ -121,11 +122,11 @@ final class CombatListViewModel: ObservableObject {
         // Set some values to initiative
         var currentInitiative = 1
         self.items.forEach {
-            $0.item.initiative = currentInitiative
+            $0.initiative = currentInitiative
             currentInitiative += 1
         }
         // Make one first and last item have the same initiative - for testing purposes
-        self.items[self.items.count - 1].item.initiative = 1
+        self.items[self.items.count - 1].initiative = 1
 
         // Set current turn to the first item - the one with highest initiative
         sortItemsByInitiative()

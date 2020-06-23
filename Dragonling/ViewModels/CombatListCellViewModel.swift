@@ -10,7 +10,8 @@ import Foundation
 
 final class CombatListCellViewModel {
 
-    @Published var item: CombatItem
+    // Should this be exposed or private?
+    @Published private(set) var item: CombatItem
     @Published var active: Bool
     @Published var hasActivated: Bool = false
     // @Published var isWaiting: Bool = false
@@ -26,6 +27,15 @@ final class CombatListCellViewModel {
 
     var name: String {
         return self.item.name.capitalized
+    }
+
+    var initiative: Int {
+        set {
+            item.initiative = newValue
+        }
+        get {
+            return self.item.initiative
+        }
     }
 }
 

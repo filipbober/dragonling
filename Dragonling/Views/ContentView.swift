@@ -22,7 +22,7 @@ struct ContentView: View {
         //      highest initiative should be highlighted
         // Make 'Current Turn' sticky at the top
 
-        // Add 'activated' field to Entity to track if it has moved already this turn
+        // done - Add 'activated' field to Entity to track if it has moved already this turn
 
         // Add 'wait' along with End Turn button - wait changes to end turn when all
         // other entities moved
@@ -32,7 +32,14 @@ struct ContentView: View {
 
         // move functions in views to extension - to better separate?
 
-        // BUG - why doesnt update and refresh work in the same function?
+        // done - BUG - why doesnt update and refresh work in the same function?
+
+        // WAIT
+        // postpones an action until trigger fires
+        // burns a reaction - store it in the model
+        // store if reaction is ready on combat tracker
+        // visualize with system icon 'waiting', 'done'
+        // hourglass, checkmark
 
         NavigationView {
             Form {
