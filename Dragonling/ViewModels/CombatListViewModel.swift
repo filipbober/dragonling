@@ -14,27 +14,23 @@ final class CombatListViewModel: ObservableObject {
     @Published var currentEntityId: UUID?
     @Published var items = [CombatListCellViewModel]()
 
-    //private var currentEntityId: UUID?
     private var currentItemIndex = 0
 
     init() {
         loadItems()
         updateCurrentItem()
-        refreshActiveItems()
     }
 
     func add() {
         items.append(CombatListCellViewModel(item: CombatItem(name: "New monster"), active: false))
 
         updateCurrentItem()
-        refreshActiveItems()
     }
 
     func move(from source: IndexSet, to destination: Int) {
         items.move(fromOffsets: source, toOffset: destination)
 
         updateCurrentItem()
-        refreshActiveItems()
     }
 
     func remove(at offsets: IndexSet) {
@@ -43,19 +39,15 @@ final class CombatListViewModel: ObservableObject {
         }
 
         updateCurrentItem()
-        refreshActiveItems()
     }
 
     func updateCurrentItem() {
         // Current item is first active and not waiting from the list
-        var index = 0
-        for item in self.items {
+        for (index, item) in self.items.enumerated() {
             if !item.hasActivated {
                 currentItemIndex = index
                 break
             }
-            
-            index += 1
         }
 
         if (items.count > 0) {
@@ -63,6 +55,8 @@ final class CombatListViewModel: ObservableObject {
         } else {
             currentEntityId = nil
         }
+
+        refreshActiveItems()
     }
 
     func refreshActiveItems() {
@@ -97,7 +91,6 @@ final class CombatListViewModel: ObservableObject {
         }
 
         updateCurrentItem()
-        refreshActiveItems()
     }
 
     func nextTurn() {
@@ -109,11 +102,11 @@ final class CombatListViewModel: ObservableObject {
         }
 
         updateCurrentItem()
-        refreshActiveItems()
     }
 
     func sortItemsByInitiative() {
         self.items = self.items.sorted()
+
         updateCurrentItem()
     }
 
@@ -133,7 +126,6 @@ final class CombatListViewModel: ObservableObject {
         }
         // Make one first and last item have the same initiative - for testing purposes
         self.items[self.items.count - 1].item.initiative = 1
-
 
         // Set current turn to the first item - the one with highest initiative
         sortItemsByInitiative()
