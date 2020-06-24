@@ -94,6 +94,12 @@ final class CombatListViewModel: ObservableObject {
         updateCurrentItem()
     }
 
+    func delay() {
+        self.items[self.currentItemIndex].isDelaying = true
+
+        updateCurrentItem()
+    }
+
     func nextTurn() {
         self.currentTurn += 1
 

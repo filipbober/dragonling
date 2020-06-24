@@ -12,13 +12,17 @@ struct CombatListCell: View {
 
     let combatListCellVM: CombatListCellViewModel
     let endTurnAction: () -> Void
+    let delayAction: () -> Void
 
     var body: some View {
         VStack(alignment: .leading) {
             Text(combatListCellVM.name)
-            Text("Has activated: \(String(combatListCellVM.hasActivated))")
+            Text("Activated: \(String(combatListCellVM.hasActivated))")
+            Text("Delaying: \(String(combatListCellVM.isDelaying))")
             HStack {
                 EndTurnButton
+                Spacer()
+                DelayButton
                 Spacer()
                 Text("Initiative: \(combatListCellVM.item.initiative)")
             }
@@ -37,11 +41,27 @@ struct CombatListCell: View {
         }
     }
 
+    var DelayButton: some View {
+        Group {
+            if !self.combatListCellVM.isDelaying && self.combatListCellVM.active {
+                Button(action: self.delayAction) {
+                    Text("Delay")
+                }
+                .accentColor(.blue)
+                .buttonStyle(BorderlessButtonStyle())
+            }
+            else if self.combatListCellVM.isDelaying && combatListCellVM.active {
+                Text("Waiting")
+            }
+        }
+    }
+
 }
 
 struct CombatListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name"), active: true), endTurnAction: { })
+        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name"), active: true), endTurnAction: { },
+                       delayAction: {})
             .previewLayout(.sizeThatFits)
     }
 }

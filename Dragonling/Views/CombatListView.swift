@@ -25,7 +25,7 @@ struct CombatListView: View {
                 VStack {
                     NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: item.item)))
                     {
-                        CombatListCell(combatListCellVM: item, endTurnAction: self.endTurn)
+                        CombatListCell(combatListCellVM: item, endTurnAction: self.endTurn, delayAction: self.delay)
                     }
                 }
             }
@@ -56,6 +56,10 @@ struct CombatListView: View {
 
     private func endTurn() {
         self.combatListVM.endTurn()
+    }
+
+    private func delay() {
+        self.combatListVM.delay()
     }
 
     private func nextTurn() {
