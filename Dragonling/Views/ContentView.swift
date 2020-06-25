@@ -38,12 +38,62 @@ struct ContentView: View {
         // postpones an action until trigger fires
         // burns a reaction - store it in the model
         // store if reaction is ready on combat tracker
+
+        // Separate row for current statuses, bonus actions, reactions
+
+        // Reactions
+        // additional button?
+        // SF Icon indicating if it was used but set in details?
+
+        // SF Symbols
         // visualize with system icon 'waiting', 'done'
         // hourglass, checkmark
+        // visualize when reaction is used
+        // Visualize item status
+        // List of statuses: poisoned, prone etc. [Pro version]
 
-        // self.
+        // Refactor self.
         // Use self. only in closures and when necessary (properties)
         // instead of making it a useless noise
+
+        // Initiative
+        // Sort by initiative if there is one set
+        // Otherwise initial initiative is nil and order is used
+        // any initiative that is set comes before order without initiative
+        // Use picker in DetailsView - from -10 or -5 to +40
+        // Set default picker value to 10 (usually it's 10+ something)
+
+        // Round > Turn
+        // Each character has one Turn in a Round
+        // When all characters moved in combat the Round Ends
+        // Fix naming
+
+        // Scrolling
+        // EndTurn -> Scroll to the next item if out of view (remember about delaying)
+        // EndRound -> Scroll to the top
+
+        // Haptic Feedback
+        // Use one bump for EndTurn
+        // Use two bumps for EndRound
+
+        // Reaction & Bonus Action
+        // Display icon in the list whether reaction is ready or used
+        // Display icon in the list whether bonus action is ready or used
+        // Consider separate buttons in the list (maybe for active
+        // and delaying only?)
+
+        // Expand current item (active) and delaying
+        // Provide Bonus Action / Reaction buttons like
+        // Use reaction (isDelayin already used this)
+        // Use bonus action
+        // Provide icon for each
+
+        // Implement ads
+        // Custom View for Buttons and other reusable view components
+        // Languages: English, Polish, German?, Danish?
+        // Settings -> Restore Purchases
+        // Dark Mode / Light Mode?
+
 
         NavigationView {
             Form {

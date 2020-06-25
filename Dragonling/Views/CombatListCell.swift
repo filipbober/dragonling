@@ -46,13 +46,19 @@ struct CombatListCell: View {
             if !combatListCellVM.hasActivated {
                 if !combatListCellVM.isDelaying && combatListCellVM.active {
                     Button(action: delayAction) {
-                        Text("Delay")
+                        HStack {
+                            Text("Delay")
+                            Image(systemName: "hourglass")
+                        }
                     }
                     .accentColor(.blue)
                     .buttonStyle(BorderlessButtonStyle())
                 }
                 else if combatListCellVM.isDelaying && !combatListCellVM.hasActivated {
-                    Text("Waiting")
+                    HStack {
+                        Text("Waiting")
+                        Image(systemName: "hourglass.tophalf.fill")
+                    }
                 }
             }
         }
