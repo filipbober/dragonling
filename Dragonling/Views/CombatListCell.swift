@@ -11,7 +11,7 @@ import SwiftUI
 struct CombatListCell: View {
 
     let combatListCellVM: CombatListCellViewModel
-    let endTurnAction: () -> Void
+    let endTurnAction: (UUID) -> Void
     let delayAction: () -> Void
 
     var body: some View {
@@ -32,7 +32,7 @@ struct CombatListCell: View {
     var EndTurnButton: some View {
         Group {
             if self.combatListCellVM.active {
-                Button(action: self.endTurnAction) {
+                Button(action: { self.endTurnAction(self.combatListCellVM.id) }) {
                     Text("End turn")
                 }
                 .accentColor(.blue)
@@ -60,7 +60,7 @@ struct CombatListCell: View {
 
 struct CombatListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name"), active: true), endTurnAction: { },
+        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name"), active: true), endTurnAction: {_ in },
                        delayAction: {})
             .previewLayout(.sizeThatFits)
     }

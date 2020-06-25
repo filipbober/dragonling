@@ -83,13 +83,15 @@ final class CombatListViewModel: ObservableObject {
         return true
     }
 
-    func endTurn() {
-        self.items[self.currentItemIndex].hasActivated = true
+    func endTurn(for id: UUID) {
+        let index = self.items.firstIndex { $0.id == id }
 
-        self.currentItemIndex += 1
-        if self.currentItemIndex >= self.items.count {
-            self.currentItemIndex = 0
+        guard let unwrappedIndex = index else {
+            return
         }
+
+        self.items[unwrappedIndex].hasActivated = true
+        self.currentItemIndex = unwrappedIndex
 
         updateCurrentItem()
     }
