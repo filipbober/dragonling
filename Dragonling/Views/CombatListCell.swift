@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct CombatListCell: View {
-
+    
     let combatListCellVM: CombatListCellViewModel
     let endTurnAction: (UUID) -> Void
     let delayAction: () -> Void
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(combatListCellVM.name)
@@ -28,10 +28,10 @@ struct CombatListCell: View {
             }
         }
     }
-
+    
     var EndTurnButton: some View {
         Group {
-            if self.combatListCellVM.active {
+            if showEndTurn() {
                 Button(action: { self.endTurnAction(self.combatListCellVM.id) }) {
                     Text("End turn")
                 }
@@ -40,22 +40,36 @@ struct CombatListCell: View {
             }
         }
     }
-
+    
     var DelayButton: some View {
         Group {
-            if !self.combatListCellVM.isDelaying && self.combatListCellVM.active {
-                Button(action: self.delayAction) {
-                    Text("Delay")
+            if !combatListCellVM.hasActivated {
+                if !combatListCellVM.isDelaying && combatListCellVM.active {
+                    Button(action: delayAction) {
+                        Text("Delay")
+                    }
+                    .accentColor(.blue)
+                    .buttonStyle(BorderlessButtonStyle())
                 }
-                .accentColor(.blue)
-                .buttonStyle(BorderlessButtonStyle())
-            }
-            else if self.combatListCellVM.isDelaying && combatListCellVM.active {
-                Text("Waiting")
+                else if combatListCellVM.isDelaying && !combatListCellVM.hasActivated {
+                    Text("Waiting")
+                }
             }
         }
     }
-
+    
+    private func showEndTurn() -> Bool {
+        if combatListCellVM.hasActivated {
+            return false
+        } else if combatListCellVM.active {
+            return true
+        } else if combatListCellVM.isDelaying {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }
 
 struct CombatListCell_Previews: PreviewProvider {

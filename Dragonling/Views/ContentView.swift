@@ -41,6 +41,10 @@ struct ContentView: View {
         // visualize with system icon 'waiting', 'done'
         // hourglass, checkmark
 
+        // self.
+        // Use self. only in closures and when necessary (properties)
+        // instead of making it a useless noise
+
         NavigationView {
             Form {
                 Text("Current turn: \(combatListVM.currentTurn)")

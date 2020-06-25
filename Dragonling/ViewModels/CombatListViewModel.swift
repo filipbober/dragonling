@@ -45,7 +45,7 @@ final class CombatListViewModel: ObservableObject {
     func updateCurrentItem() {
         // Current item is first active and not waiting from the list
         for (index, item) in self.items.enumerated() {
-            if !item.hasActivated {
+            if !item.hasActivated && !item.isDelaying {
                 currentItemIndex = index
                 break
             }
@@ -69,6 +69,7 @@ final class CombatListViewModel: ObservableObject {
         } else {
             for item in self.items {
                 item.active = self.currentEntityId == item.id ? true : false
+
             }
         }
     }
@@ -99,6 +100,10 @@ final class CombatListViewModel: ObservableObject {
     func delay() {
         self.items[self.currentItemIndex].isDelaying = true
 
+        if let firstActiveItemIndex = items.firstIndex(where: { !$0.hasActivated && !$0.isDelaying }) {
+            currentItemIndex = firstActiveItemIndex
+        }
+
         updateCurrentItem()
     }
 
@@ -108,6 +113,7 @@ final class CombatListViewModel: ObservableObject {
         // Reset activated
         for item in items {
             item.hasActivated = false
+            item.isDelaying = false
         }
 
         updateCurrentItem()
