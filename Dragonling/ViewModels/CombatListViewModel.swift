@@ -107,6 +107,18 @@ final class CombatListViewModel: ObservableObject {
         updateCurrentItem()
     }
 
+    func useReaction(for id: UUID) {
+        let index = self.items.firstIndex { $0.id == id }
+
+        guard let unwrappedIndex = index else {
+            return
+        }
+
+        self.items[unwrappedIndex].usedReaction = true
+
+        updateCurrentItem()
+    }
+
     func nextTurn() {
         self.currentTurn += 1
 
@@ -114,6 +126,7 @@ final class CombatListViewModel: ObservableObject {
         for item in items {
             item.hasActivated = false
             item.isDelaying = false
+            item.usedReaction = false
         }
 
         updateCurrentItem()

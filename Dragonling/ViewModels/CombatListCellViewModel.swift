@@ -15,7 +15,7 @@ final class CombatListCellViewModel {
     @Published var active: Bool
     @Published var hasActivated: Bool = false
     @Published var isDelaying: Bool = false
-    // @Published var isWaiting: Bool = false
+    @Published var usedReaction: Bool = false
 
     init(item: CombatItem, active: Bool) {
         self.item = item

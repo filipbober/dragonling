@@ -29,7 +29,7 @@ struct CombatListView: View {
                     {
                         CombatListCell(combatListCellVM: item, endTurnAction: { _ in
                             self.endTurn(for: item.id)
-                        }, delayAction: self.delay)
+                        }, delayAction: self.delay, useReaction: { _ in self.useReaction(for: item.id) })
                     }
                 }
             }
@@ -64,6 +64,10 @@ struct CombatListView: View {
 
     private func delay() {
         self.combatListVM.delay()
+    }
+
+    private func useReaction(for id: UUID) {
+        self.combatListVM.useReaction(for: id)
     }
 
     private func nextTurn() {

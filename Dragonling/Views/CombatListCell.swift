@@ -13,23 +13,25 @@ struct CombatListCell: View {
     let combatListCellVM: CombatListCellViewModel
     let endTurnAction: (UUID) -> Void
     let delayAction: () -> Void
+    let useReaction: (UUID) -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(combatListCellVM.name)
             Text("Activated: \(String(combatListCellVM.hasActivated))")
             Text("Delaying: \(String(combatListCellVM.isDelaying))")
+            Text("Initiative: \(combatListCellVM.item.initiative)")
             HStack {
-                EndTurnButton
+                endTurnButton
                 Spacer()
-                DelayButton
+                delayButton
                 Spacer()
-                Text("Initiative: \(combatListCellVM.item.initiative)")
+                reactionButton
             }
         }
     }
     
-    var EndTurnButton: some View {
+    var endTurnButton: some View {
         Group {
             if showEndTurn() {
                 Button(action: { self.endTurnAction(self.combatListCellVM.id) }) {
@@ -41,7 +43,7 @@ struct CombatListCell: View {
         }
     }
     
-    var DelayButton: some View {
+    var delayButton: some View {
         Group {
             if !combatListCellVM.hasActivated {
                 if !combatListCellVM.isDelaying && combatListCellVM.active {
@@ -63,6 +65,20 @@ struct CombatListCell: View {
             }
         }
     }
+
+    var reactionButton: some View {
+        Group {
+            if !combatListCellVM.usedReaction {
+                Button(action: { self.useReaction(self.combatListCellVM.id) }) {
+                    Text("Reaction")
+                }
+                .accentColor(.blue)
+                .buttonStyle(BorderlessButtonStyle())
+            } else {
+                Text("Reacted")
+            }
+        }
+    }
     
     private func showEndTurn() -> Bool {
         if combatListCellVM.hasActivated {
@@ -80,8 +96,8 @@ struct CombatListCell: View {
 
 struct CombatListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name"), active: true), endTurnAction: {_ in },
-                       delayAction: {})
+        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name"), active: true), endTurnAction: { _ in },
+                       delayAction: {}, useReaction: { _ in })
             .previewLayout(.sizeThatFits)
     }
 }
