@@ -41,7 +41,7 @@ struct ContentView: View {
 
         // Separate row for current statuses, bonus actions, reactions
 
-        // Reactions
+        // done - Reactions
         // additional button?
         // SF Icon indicating if it was used but set in details?
         // Button instead of initiative, initiative -> move to details
@@ -65,7 +65,7 @@ struct ContentView: View {
         // Use picker in DetailsView - from -10 or -5 to +40
         // Set default picker value to 10 (usually it's 10+ something)
 
-        // Round > Turn
+        // done - Round > Turn
         // Each character has one Turn in a Round
         // When all characters moved in combat the Round Ends
         // Fix naming
@@ -106,7 +106,7 @@ struct ContentView: View {
 
         NavigationView {
             Form {
-                Text("Current turn: \(combatListVM.currentTurn)")
+                Text("Current round: \(combatListVM.currentRound)")
                 CombatListView(combatListViewModel: combatListVM)
             }
             .navigationBarTitle(Text("Combat Tracker"))

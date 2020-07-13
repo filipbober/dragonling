@@ -10,7 +10,7 @@ import Foundation
 
 final class CombatListViewModel: ObservableObject {
 
-    @Published var currentTurn: Int = 1
+    @Published var currentRound: Int = 1
     @Published var currentEntityId: UUID?
     // Should this be private?
     @Published private(set) var items = [CombatListCellViewModel]()
@@ -61,7 +61,7 @@ final class CombatListViewModel: ObservableObject {
     }
 
     func refreshActiveItems() {
-        // If all entities had action disable active and wait till end turn is pressed
+        // If all entities had action disable active and wait till end round is pressed
         if allActivated() {
             for item in self.items {
                 item.active = false
@@ -69,7 +69,6 @@ final class CombatListViewModel: ObservableObject {
         } else {
             for item in self.items {
                 item.active = self.currentEntityId == item.id ? true : false
-
             }
         }
     }
@@ -119,8 +118,8 @@ final class CombatListViewModel: ObservableObject {
         updateCurrentItem()
     }
 
-    func nextTurn() {
-        self.currentTurn += 1
+    func nextRound() {
+        self.currentRound += 1
 
         // Reset activated
         for item in items {
@@ -139,7 +138,7 @@ final class CombatListViewModel: ObservableObject {
     }
 
     func loadItems() {
-        self.currentTurn = 1
+        self.currentRound = 1
 
         // Load example items
         let items = CombatItem.all()
