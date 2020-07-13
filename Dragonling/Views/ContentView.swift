@@ -44,6 +44,7 @@ struct ContentView: View {
         // Reactions
         // additional button?
         // SF Icon indicating if it was used but set in details?
+        // Button instead of initiative, initiative -> move to details
 
         // SF Symbols
         // visualize with system icon 'waiting', 'done'
@@ -60,6 +61,7 @@ struct ContentView: View {
         // Sort by initiative if there is one set
         // Otherwise initial initiative is nil and order is used
         // any initiative that is set comes before order without initiative
+        //  but can be later moved manually (order)
         // Use picker in DetailsView - from -10 or -5 to +40
         // Set default picker value to 10 (usually it's 10+ something)
 
@@ -81,18 +83,25 @@ struct ContentView: View {
         // Display icon in the list whether bonus action is ready or used
         // Consider separate buttons in the list (maybe for active
         // and delaying only?)
+        // Bonus action not needed - check if bonus action is ALWAYS
+        //  used as part of an action
 
         // Expand current item (active) and delaying
         // Provide Bonus Action / Reaction buttons like
         // Use reaction (isDelayin already used this)
         // Use bonus action
         // Provide icon for each
+        // Small status icons under item name
+        //  details view provies legend for those
+        //  poison icon in the list; poison icon with 'poisoned' in details
 
         // Implement ads
         // Custom View for Buttons and other reusable view components
         // Languages: English, Polish, German?, Danish?
         // Settings -> Restore Purchases
         // Dark Mode / Light Mode?
+
+        // Monster portrait on the left
 
 
         NavigationView {
