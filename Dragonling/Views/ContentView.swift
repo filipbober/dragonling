@@ -103,6 +103,9 @@ struct ContentView: View {
 
         // Monster portrait on the left
 
+        // View Presets for
+        // buttons, text, large text etc.
+
 
         NavigationView {
             Form {

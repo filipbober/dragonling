@@ -10,7 +10,7 @@ import Foundation
 
 final class CombatItemDetailViewModel: ObservableObject {
 
-    let item: CombatItem
+    @Published private(set) var item: CombatItem
 
     init(item: CombatItem) {
         self.item = item
@@ -21,6 +21,21 @@ final class CombatItemDetailViewModel: ObservableObject {
     }
 
     var name: String {
-        return self.item.name.capitalized
+        get {
+            return self.item.name.capitalized
+        }
+        set {
+            item.name = newValue.capitalized
+        }
+    }
+
+    var initiative: Int {
+        get {
+            //item.initiative += 1
+            return item.initiative
+        }
+        set {
+            item.initiative = newValue
+        }
     }
 }

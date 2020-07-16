@@ -21,6 +21,7 @@ struct CombatListCell: View {
             Text("Activated: \(String(combatListCellVM.hasActivated))")
             Text("Delaying: \(String(combatListCellVM.isDelaying))")
             Text("Initiative: \(combatListCellVM.item.initiative)")
+            Text("ItemId: \(combatListCellVM.item.id)")
             HStack {
                 endTurnButton
                 Spacer()
