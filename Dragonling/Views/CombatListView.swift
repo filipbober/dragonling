@@ -30,11 +30,13 @@ struct CombatListView: View {
                         CombatListCell(combatListCellVM: item, endTurnAction: { _ in
                             self.endTurn(for: item.id)
                         }, delayAction: self.delay, useReaction: { _ in self.useReaction(for: item.id) })
+                        Divider()
                     }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
-            .onDelete(perform: delete)
-            .onMove(perform: move)
+            .onDelete(perform: self.delete)
+            .onMove(perform: self.move)
 
             Button(action: {
                 self.nextRound()
