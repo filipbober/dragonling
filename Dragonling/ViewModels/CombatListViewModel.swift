@@ -13,6 +13,7 @@ final class CombatListViewModel: ObservableObject {
     @Published var currentRound: Int = 1
     @Published var currentEntityId: UUID?
     // Should this be private?
+    // Array of [CombatItem]
     @Published private(set) var items = [CombatListCellViewModel]()
 
     private var currentItemIndex = 0

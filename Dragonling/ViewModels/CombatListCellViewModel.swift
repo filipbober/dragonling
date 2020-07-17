@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class CombatListCellViewModel {
+final class CombatListCellViewModel: ObservableObject {
 
     // Should this be exposed or private?
     @Published private(set) var item: CombatItem

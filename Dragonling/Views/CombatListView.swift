@@ -25,6 +25,7 @@ struct CombatListView: View {
         List {
             ForEach(self.combatListVM.items, id:\.id) { item in
                 VStack {
+                    // Maybe all view models should operate on CombatItem structs?
                     NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: item.item)))
                     {
                         CombatListCell(combatListCellVM: item, endTurnAction: { _ in

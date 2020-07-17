@@ -106,6 +106,15 @@ struct ContentView: View {
         // View Presets for
         // buttons, text, large text etc.
 
+        // Fix bug when
+        // 1. Run app
+        // 2. Go to details
+        // 3. Rename
+        // 4. Done
+        // 5. Go back to list
+        // 6. Edit
+        // 7. Try to move
+
 
         NavigationView {
             Form {
