@@ -115,6 +115,25 @@ struct ContentView: View {
         // 6. Edit
         // 7. Try to move
 
+        // Source of Truth list
+        // https://www.hackingwithswift.com/quick-start/swiftui/all-swiftui-property-wrappers-explained-and-compared
+
+        // https://developer.apple.com/forums/thread/654511
+        // Data Essentials in SwiftUI
+        // https://developer.apple.com/videos/play/wwdc2020/10040/
+        // ReadingListViewer : View
+        //  @SceneStorage("selection") var selection: String?
+        //  NavigationView -> ReadingList(selection: $selection) Placeholder()
+        // ReadingList: View
+        //  @ObservedObject var store = ReadingListStore() -- wrong
+        //      ! repeated heap allocation ! -> solution:
+        //  @StateObject var store = ReadingListStore() // SourceOfTruth
+        //
+        // @main struct BookClubApp: App
+        //  @StateObject private var store = ReadingListStore() // app wide Source of Truth
+        //  var body: some View
+        //      WindowGroup
+        //          ReadingListViewer(store: store) // list view
 
         NavigationView {
             Form {

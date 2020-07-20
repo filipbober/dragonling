@@ -14,6 +14,10 @@ struct CombatListView: View {
 
     private var clickedId = UUID()
 
+    // TODO Use @StateObject in the list instead of the @ObservableObject
+    // @ObservedObject var something = SomeType() should almost always used @StateObject instead
+    // create your object somewhere using @StateObject, then use it in other views with @ObservedObject
+
     init(combatListViewModel: CombatListViewModel) {
         self.combatListVM = combatListViewModel
 
