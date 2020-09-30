@@ -137,6 +137,7 @@ struct ContentView: View {
         //      WindowGroup
         //          ReadingListViewer(store: store) // list view
 
+
         NavigationView {
             Form {
                 Text("Current round: \(combatListVM.currentRound)")
