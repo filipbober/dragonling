@@ -11,13 +11,13 @@ import Foundation
 final class CombatListCellViewModel: ObservableObject {
 
     // Should this be exposed or private?
-    @Published private(set) var item: CombatItem
+    @Published private(set) var item: CombatItemViewModel
     @Published var active: Bool
     @Published var hasActivated: Bool = false
     @Published var isDelaying: Bool = false
     @Published var usedReaction: Bool = false
 
-    init(item: CombatItem, active: Bool) {
+    init(item: CombatItemViewModel, active: Bool) {
         self.item = item
         self.active = active
     }
@@ -41,11 +41,21 @@ final class CombatListCellViewModel: ObservableObject {
 }
 
 extension CombatListCellViewModel: Comparable {
-    static func < (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
-        return lhs.item.initiative > rhs.item.initiative
-    }
-
-    static func == (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
-        return lhs.item.id == rhs.item.id
-    }
+        static func < (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
+            return lhs.item > rhs.item
+        }
+    
+        static func == (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
+            return lhs.item == rhs.item
+        }
 }
+
+//extension CombatListCellViewModel: Comparable {
+//    static func < (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
+//        return lhs.item.initiative > rhs.item.initiative
+//    }
+//
+//    static func == (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
+//        return lhs.item.id == rhs.item.id
+//    }
+//}

@@ -10,9 +10,9 @@ import Foundation
 
 final class CombatItemDetailViewModel: ObservableObject {
 
-    @Published private(set) var item: CombatItem
+    @Published private(set) var item: CombatItemViewModel
 
-    init(item: CombatItem) {
+    init(item: CombatItemViewModel) {
         self.item = item
     }
 

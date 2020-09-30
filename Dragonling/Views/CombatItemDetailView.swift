@@ -57,7 +57,7 @@ struct CombatItemDetailView: View {
 struct CombatItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: CombatItem(name: "Goblin")))
+            CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: CombatItemViewModel(item: CombatItem(name: "Goblin"))))
         }
     }
 }

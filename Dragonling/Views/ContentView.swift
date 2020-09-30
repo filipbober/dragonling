@@ -12,7 +12,7 @@ struct ContentView: View {
 
     // Change to @StateObject
     // Update AppDelegate.swift
-    @ObservedObject private var combatListVM: CombatListViewModel = CombatListViewModel()
+    @StateObject private var combatListVM: CombatListViewModel = CombatListViewModel()
     @State private var editMode = EditMode.inactive
     
     var body: some View {

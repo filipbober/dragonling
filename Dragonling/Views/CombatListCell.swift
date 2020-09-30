@@ -97,7 +97,7 @@ struct CombatListCell: View {
 
 struct CombatListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItem(name: "Test name"), active: true), endTurnAction: { _ in },
+        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItemViewModel(item: CombatItem(name: "Test name")), active: true), endTurnAction: { _ in },
                        delayAction: {}, useReaction: { _ in })
             .previewLayout(.sizeThatFits)
     }

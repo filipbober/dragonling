@@ -24,7 +24,7 @@ final class CombatListViewModel: ObservableObject {
     }
 
     func add() {
-        items.append(CombatListCellViewModel(item: CombatItem(name: "New monster"), active: false))
+        items.append(CombatListCellViewModel(item: CombatItemViewModel(item: CombatItem(name: "New monster")), active: false))
 
         updateCurrentItem()
     }
@@ -144,7 +144,7 @@ final class CombatListViewModel: ObservableObject {
         // Load example items
         let items = CombatItem.all()
 
-        self.items = items.map() { CombatListCellViewModel.init(item: $0, active: false) }
+        self.items = items.map() { CombatListCellViewModel.init(item: CombatItemViewModel(item: $0), active: false) }
 
         // Set some values to initiative
         var currentInitiative = 1

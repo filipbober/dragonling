@@ -18,6 +18,7 @@
 		737A0290247D29E5006E9066 /* CombatListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A028F247D29E5006E9066 /* CombatListCellViewModel.swift */; };
 		73994DAD247E966B000E6E1A /* CombatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73994DAC247E966B000E6E1A /* CombatListView.swift */; };
 		73A0823625248BED005B0069 /* DragonlingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0823525248BED005B0069 /* DragonlingApp.swift */; };
+		73A082432524BAF0005B0069 /* CombatItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A082422524BAF0005B0069 /* CombatItemViewModel.swift */; };
 		73F83ED824854EE300F497EC /* CombatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F83ED724854EE300F497EC /* CombatListCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		737A028F247D29E5006E9066 /* CombatListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListCellViewModel.swift; sourceTree = "<group>"; };
 		73994DAC247E966B000E6E1A /* CombatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListView.swift; sourceTree = "<group>"; };
 		73A0823525248BED005B0069 /* DragonlingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonlingApp.swift; sourceTree = "<group>"; };
+		73A082422524BAF0005B0069 /* CombatItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatItemViewModel.swift; sourceTree = "<group>"; };
 		73F83ED724854EE300F497EC /* CombatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 				737A028D247D2796006E9066 /* CombatListViewModel.swift */,
 				737A028F247D29E5006E9066 /* CombatListCellViewModel.swift */,
 				7355850E2492396100B0AD9A /* CombatItemDetailViewModel.swift */,
+				73A082422524BAF0005B0069 /* CombatItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				73A0823625248BED005B0069 /* DragonlingApp.swift in Sources */,
 				737A0277247BDFB1006E9066 /* Dragonling.xcdatamodeld in Sources */,
 				737A0290247D29E5006E9066 /* CombatListCellViewModel.swift in Sources */,
+				73A082432524BAF0005B0069 /* CombatItemViewModel.swift in Sources */,
 				737A0279247BDFB1006E9066 /* ContentView.swift in Sources */,
 				73994DAD247E966B000E6E1A /* CombatListView.swift in Sources */,
 				73F83ED824854EE300F497EC /* CombatListCell.swift in Sources */,
