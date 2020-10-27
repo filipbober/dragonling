@@ -17,7 +17,7 @@ struct CombatItemDetailView: View {
         ZStack {
             VStack {
                 Text(combatItemDetailVM.name)
-                Text(combatItemDetailVM.item.name)
+                Text(combatItemDetailVM.itemVm.name)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 name
@@ -26,7 +26,7 @@ struct CombatItemDetailView: View {
                     Text("Rename")
                 }
                 Text("initiative: \(combatItemDetailVM.initiative)")
-                Text("itemId: \(combatItemDetailVM.item.id)")
+                Text("itemId: \(combatItemDetailVM.itemVm.id)")
 
                 Spacer()
 
@@ -57,7 +57,7 @@ struct CombatItemDetailView: View {
 struct CombatItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: CombatItemViewModel(item: CombatItem(name: "Goblin"))))
+            CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(itemVm: CombatItemViewModel(item: CombatItem(name: "Goblin"))))
         }
     }
 }

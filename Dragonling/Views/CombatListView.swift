@@ -24,17 +24,17 @@ struct CombatListView: View {
         // Will refresh every time the View is rebuilt - when ObservedObject changes
         combatListVM.refreshActiveItems()
     }
-
+//https://stackoverflow.com/questions/64526552/swiftui-how-to-update-a-variable-transiting-from-a-parent-view-only-when-wanted
     var body: some View {
         List {
-            ForEach(self.combatListVM.items, id:\.id) { item in
+            ForEach(self.combatListVM.cellVms, id:\.id) { cellVm in
                 VStack {
                     // Maybe all view models should operate on CombatItem structs?
-                    NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(item: item.item)))
+                    NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(itemVm: cellVm.itemVm/*.item*/)))
                     {
-                        CombatListCell(combatListCellVM: item, endTurnAction: { _ in
-                            self.endTurn(for: item.id)
-                        }, delayAction: self.delay, useReaction: { _ in self.useReaction(for: item.id) })
+                        CombatListCell(combatListCellVM: cellVm, endTurnAction: { _ in
+                            self.endTurn(for: cellVm.id)
+                        }, delayAction: self.delay, useReaction: { _ in self.useReaction(for: cellVm.id) })
                         Divider()
                     }
                     .buttonStyle(PlainButtonStyle())

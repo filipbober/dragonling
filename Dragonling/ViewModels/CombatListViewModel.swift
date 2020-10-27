@@ -14,7 +14,7 @@ final class CombatListViewModel: ObservableObject {
     @Published var currentEntityId: UUID?
     // Should this be private?
     // Array of [CombatItem]
-    @Published private(set) var items = [CombatListCellViewModel]()
+    @Published private(set) var cellVms = [CombatListCellViewModel]()
 
     private var currentItemIndex = 0
 
@@ -24,20 +24,20 @@ final class CombatListViewModel: ObservableObject {
     }
 
     func add() {
-        items.append(CombatListCellViewModel(item: CombatItemViewModel(item: CombatItem(name: "New monster")), active: false))
+        cellVms.append(CombatListCellViewModel(itemVm: CombatItemViewModel(item: CombatItem(name: "New monster")), active: false))
 
         updateCurrentItem()
     }
 
     func move(from source: IndexSet, to destination: Int) {
-        items.move(fromOffsets: source, toOffset: destination)
+        cellVms.move(fromOffsets: source, toOffset: destination)
 
         updateCurrentItem()
     }
 
     func remove(at offsets: IndexSet) {
         if let first = offsets.first {
-            self.items.remove(at: first)
+            self.cellVms.remove(at: first)
         }
 
         updateCurrentItem()
@@ -45,15 +45,15 @@ final class CombatListViewModel: ObservableObject {
 
     func updateCurrentItem() {
         // Current item is first active and not waiting from the list
-        for (index, item) in self.items.enumerated() {
+        for (index, item) in self.cellVms.enumerated() {
             if !item.hasActivated && !item.isDelaying {
                 currentItemIndex = index
                 break
             }
         }
 
-        if (items.count > 0) {
-            currentEntityId = items[currentItemIndex].id
+        if (cellVms.count > 0) {
+            currentEntityId = cellVms[currentItemIndex].id
         } else {
             currentEntityId = nil
         }
@@ -64,18 +64,18 @@ final class CombatListViewModel: ObservableObject {
     func refreshActiveItems() {
         // If all entities had action disable active and wait till end round is pressed
         if allActivated() {
-            for item in self.items {
+            for item in self.cellVms {
                 item.active = false
             }
         } else {
-            for item in self.items {
+            for item in self.cellVms {
                 item.active = self.currentEntityId == item.id ? true : false
             }
         }
     }
 
     func allActivated() -> Bool {
-        for item in items {
+        for item in cellVms {
             if !item.hasActivated {
                 return false
             }
@@ -85,22 +85,22 @@ final class CombatListViewModel: ObservableObject {
     }
 
     func endTurn(for id: UUID) {
-        let index = self.items.firstIndex { $0.id == id }
+        let index = self.cellVms.firstIndex { $0.id == id }
 
         guard let unwrappedIndex = index else {
             return
         }
 
-        self.items[unwrappedIndex].hasActivated = true
+        self.cellVms[unwrappedIndex].hasActivated = true
         self.currentItemIndex = unwrappedIndex
 
         updateCurrentItem()
     }
 
     func delay() {
-        self.items[self.currentItemIndex].isDelaying = true
+        self.cellVms[self.currentItemIndex].isDelaying = true
 
-        if let firstActiveItemIndex = items.firstIndex(where: { !$0.hasActivated && !$0.isDelaying }) {
+        if let firstActiveItemIndex = cellVms.firstIndex(where: { !$0.hasActivated && !$0.isDelaying }) {
             currentItemIndex = firstActiveItemIndex
         }
 
@@ -108,13 +108,13 @@ final class CombatListViewModel: ObservableObject {
     }
 
     func useReaction(for id: UUID) {
-        let index = self.items.firstIndex { $0.id == id }
+        let index = self.cellVms.firstIndex { $0.id == id }
 
         guard let unwrappedIndex = index else {
             return
         }
 
-        self.items[unwrappedIndex].usedReaction = true
+        self.cellVms[unwrappedIndex].usedReaction = true
 
         updateCurrentItem()
     }
@@ -123,7 +123,7 @@ final class CombatListViewModel: ObservableObject {
         self.currentRound += 1
 
         // Reset activated
-        for item in items {
+        for item in cellVms {
             item.hasActivated = false
             item.isDelaying = false
             item.usedReaction = false
@@ -133,7 +133,7 @@ final class CombatListViewModel: ObservableObject {
     }
 
     func sortItemsByInitiative() {
-        self.items = self.items.sorted()
+        self.cellVms = self.cellVms.sorted()
 
         updateCurrentItem()
     }
@@ -144,16 +144,16 @@ final class CombatListViewModel: ObservableObject {
         // Load example items
         let items = CombatItem.all()
 
-        self.items = items.map() { CombatListCellViewModel.init(item: CombatItemViewModel(item: $0), active: false) }
+        self.cellVms = items.map() { CombatListCellViewModel.init(itemVm: CombatItemViewModel(item: $0), active: false) }
 
         // Set some values to initiative
         var currentInitiative = 1
-        self.items.forEach {
+        self.cellVms.forEach {
             $0.initiative = currentInitiative
             currentInitiative += 1
         }
         // Make one first and last item have the same initiative - for testing purposes
-        self.items[self.items.count - 1].initiative = 1
+        self.cellVms[self.cellVms.count - 1].initiative = 1
 
         // Set current turn to the first item - the one with highest initiative
         sortItemsByInitiative()

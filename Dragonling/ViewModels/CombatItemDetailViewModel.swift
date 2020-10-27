@@ -10,32 +10,32 @@ import Foundation
 
 final class CombatItemDetailViewModel: ObservableObject {
 
-    @Published private(set) var item: CombatItemViewModel
+    @Published private(set) var itemVm: CombatItemViewModel
 
-    init(item: CombatItemViewModel) {
-        self.item = item
+    init(itemVm: CombatItemViewModel) {
+        self.itemVm = itemVm
     }
 
     var id: UUID {
-        return item.id
+        return itemVm.id
     }
 
     var name: String {
         get {
-            return self.item.name.capitalized
+            return self.itemVm.name.capitalized
         }
         set {
-            item.name = newValue.capitalized
+            itemVm.name = newValue.capitalized
         }
     }
 
     var initiative: Int {
         get {
             //item.initiative += 1
-            return item.initiative
+            return itemVm.initiative
         }
         set {
-            item.initiative = newValue
+            itemVm.initiative = newValue
         }
     }
 }

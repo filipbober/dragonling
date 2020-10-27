@@ -31,7 +31,6 @@ final class CombatItemViewModel: ObservableObject {
     
     var initiative: Int {
         get {
-            //item.initiative += 1
             return item.initiative
         }
         set {

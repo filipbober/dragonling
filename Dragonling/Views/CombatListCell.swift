@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CombatListCell: View {
     
-    let combatListCellVM: CombatListCellViewModel
+    @ObservedObject var combatListCellVM: CombatListCellViewModel
     let endTurnAction: (UUID) -> Void
     let delayAction: () -> Void
     let useReaction: (UUID) -> Void
@@ -20,8 +20,8 @@ struct CombatListCell: View {
             Text(combatListCellVM.name)
             Text("Activated: \(String(combatListCellVM.hasActivated))")
             Text("Delaying: \(String(combatListCellVM.isDelaying))")
-            Text("Initiative: \(combatListCellVM.item.initiative)")
-            Text("ItemId: \(combatListCellVM.item.id)")
+            Text("Initiative: \(combatListCellVM.itemVm.initiative)")
+            Text("ItemId: \(combatListCellVM.itemVm.id)")
             HStack {
                 endTurnButton
                 Spacer()
@@ -97,7 +97,7 @@ struct CombatListCell: View {
 
 struct CombatListCell_Previews: PreviewProvider {
     static var previews: some View {
-        CombatListCell(combatListCellVM: CombatListCellViewModel(item: CombatItemViewModel(item: CombatItem(name: "Test name")), active: true), endTurnAction: { _ in },
+        CombatListCell(combatListCellVM: CombatListCellViewModel(itemVm: CombatItemViewModel(item: CombatItem(name: "Test name")), active: true), endTurnAction: { _ in },
                        delayAction: {}, useReaction: { _ in })
             .previewLayout(.sizeThatFits)
     }

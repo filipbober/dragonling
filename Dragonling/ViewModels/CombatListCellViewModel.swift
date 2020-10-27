@@ -11,42 +11,42 @@ import Foundation
 final class CombatListCellViewModel: ObservableObject {
 
     // Should this be exposed or private?
-    @Published private(set) var item: CombatItemViewModel
+    @Published private(set) var itemVm: CombatItemViewModel
     @Published var active: Bool
     @Published var hasActivated: Bool = false
     @Published var isDelaying: Bool = false
     @Published var usedReaction: Bool = false
 
-    init(item: CombatItemViewModel, active: Bool) {
-        self.item = item
+    init(itemVm: CombatItemViewModel, active: Bool) {
+        self.itemVm = itemVm
         self.active = active
     }
 
     var id: UUID {
-        return item.id
+        return itemVm.id
     }
 
     var name: String {
-        return self.item.name.capitalized
+        return self.itemVm.name.capitalized
     }
 
     var initiative: Int {
         set {
-            item.initiative = newValue
+            itemVm.initiative = newValue
         }
         get {
-            return self.item.initiative
+            return self.itemVm.initiative
         }
     }
 }
 
 extension CombatListCellViewModel: Comparable {
         static func < (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
-            return lhs.item > rhs.item
+            return lhs.itemVm > rhs.itemVm
         }
     
         static func == (lhs: CombatListCellViewModel, rhs: CombatListCellViewModel) -> Bool {
-            return lhs.item == rhs.item
+            return lhs.itemVm == rhs.itemVm
         }
 }
 
