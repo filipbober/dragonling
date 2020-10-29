@@ -11,6 +11,7 @@ import SwiftUI
 struct CombatListView: View {
 
     @ObservedObject var combatListVM: CombatListViewModel
+    @State var needRefresh: Bool = false
 
     private var clickedId = UUID()
 
@@ -30,7 +31,7 @@ struct CombatListView: View {
             ForEach(self.combatListVM.cellVms, id:\.id) { cellVm in
                 VStack {
                     // Maybe all view models should operate on CombatItem structs?
-                    NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(itemVm: cellVm.itemVm/*.item*/)))
+                    NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(itemVm: cellVm.itemVm), needRefresh: $needRefresh))
                     {
                         CombatListCell(combatListCellVM: cellVm, endTurnAction: { _ in
                             self.endTurn(for: cellVm.id)

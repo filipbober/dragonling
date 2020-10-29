@@ -11,9 +11,12 @@ import Foundation
 final class CombatItemDetailViewModel: ObservableObject {
 
     @Published private(set) var itemVm: CombatItemViewModel
+    @Published var item: CombatItem
 
     init(itemVm: CombatItemViewModel) {
         self.itemVm = itemVm
+        item = CombatItem(name: "DeleteMe")
+        item.initiative = 0
     }
 
     var id: UUID {
@@ -25,6 +28,7 @@ final class CombatItemDetailViewModel: ObservableObject {
             return self.itemVm.name.capitalized
         }
         set {
+            objectWillChange.send()
             itemVm.name = newValue.capitalized
         }
     }
@@ -35,6 +39,7 @@ final class CombatItemDetailViewModel: ObservableObject {
             return itemVm.initiative
         }
         set {
+            objectWillChange.send()
             itemVm.initiative = newValue
         }
     }

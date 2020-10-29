@@ -12,6 +12,7 @@ struct CombatItemDetailView: View {
 
     @ObservedObject var combatItemDetailVM: CombatItemDetailViewModel
     @State private var editMode = EditMode.inactive
+    @Binding var needRefresh: Bool
 
     var body: some View {
         ZStack {
@@ -22,10 +23,19 @@ struct CombatItemDetailView: View {
                     .fontWeight(.bold)
                 name
                 //.navigationBarItems(trailing: EditButton())
-                Button(action: { self.combatItemDetailVM.initiative += 1 }) {
+                //Button(action: { self.combatItemDetailVM.initiative += 1 }) {
+                //https://applandeo.com/blog/swiftui-two-way-binding-and-more/
+                //Button(action: { self.combatItemDetailVM.itemVm.initiative += 1 }) {
+                Button(action: {
+                        self.combatItemDetailVM.initiative += 1
+                        self.needRefresh = true
+                        //self.combatItemDetailVM.item.initiative += 1
+                }) {
                     Text("Rename")
                 }
-                Text("initiative: \(combatItemDetailVM.initiative)")
+                //Text("initiative: \(self.combatItemDetailVM.itemVm.initiative)")
+                Text("initiative: \(self.combatItemDetailVM.initiative)")
+                //Text("initiative2: \(self.combatItemDetailVM.item.initiative)")
                 Text("itemId: \(combatItemDetailVM.itemVm.id)")
 
                 Spacer()
@@ -55,9 +65,10 @@ struct CombatItemDetailView: View {
 }
 
 struct CombatItemDetailView_Previews: PreviewProvider {
+    @State static var refresh: Bool = false
     static var previews: some View {
         NavigationView {
-            CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(itemVm: CombatItemViewModel(item: CombatItem(name: "Goblin"))))
+            CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(itemVm: CombatItemViewModel(item: CombatItem(name: "Goblin"))), needRefresh: $refresh)
         }
     }
 }

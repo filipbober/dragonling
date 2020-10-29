@@ -32,6 +32,7 @@ final class CombatListCellViewModel: ObservableObject {
 
     var initiative: Int {
         set {
+            objectWillChange.send()
             itemVm.initiative = newValue
         }
         get {

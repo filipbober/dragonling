@@ -25,6 +25,7 @@ final class CombatItemViewModel: ObservableObject {
             return self.item.name.capitalized
         }
         set {
+            objectWillChange.send()
             item.name = newValue.capitalized
         }
     }
@@ -34,6 +35,7 @@ final class CombatItemViewModel: ObservableObject {
             return item.initiative
         }
         set {
+            objectWillChange.send()
             item.initiative = newValue
         }
     }
