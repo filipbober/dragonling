@@ -8,37 +8,43 @@
 
 import Foundation
 
-final class CombatItemViewModel: ObservableObject {
-    
+final class CombatItemViewModel: ObservableObject, Identifiable {
+
     @Published private(set) var item: CombatItem
-    
+    let id = UUID()
+    @Published var name: String
+    @Published var initiative: Int = 0
+
     init(item: CombatItem) {
         self.item = item
+
+        name = item.name
+        initiative = item.initiative
     }
+
+//    var id: UUID {
+//        return item.id
+//    }
     
-    var id: UUID {
-        return item.id
-    }
-    
-    var name: String {
-        get {
-            return self.item.name.capitalized
-        }
-        set {
-            objectWillChange.send()
-            item.name = newValue.capitalized
-        }
-    }
-    
-    var initiative: Int {
-        get {
-            return item.initiative
-        }
-        set {
-            objectWillChange.send()
-            item.initiative = newValue
-        }
-    }
+//    var name: String {
+//        get {
+//            return self.item.name.capitalized
+//        }
+//        set {
+//            objectWillChange.send()
+//            item.name = newValue.capitalized
+//        }
+//    }
+//
+//    var initiative: Int {
+//        get {
+//            return item.initiative
+//        }
+//        set {
+//            objectWillChange.send()
+//            item.initiative = newValue
+//        }
+//    }
 }
 
 extension CombatItemViewModel: Comparable {

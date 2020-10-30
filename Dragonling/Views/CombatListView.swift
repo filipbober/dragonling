@@ -43,6 +43,9 @@ struct CombatListView: View {
             }
             .onDelete(perform: self.delete)
             .onMove(perform: self.move)
+            .onAppear(perform: {
+                combatListVM.refreshActiveItems()
+            })
 
             Button(action: {
                 self.nextRound()
