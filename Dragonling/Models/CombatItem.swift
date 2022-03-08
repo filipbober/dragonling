@@ -10,9 +10,7 @@ import Foundation
 
 struct CombatItem: Identifiable {
     let id = UUID()
-    //let order: Int
     var name: String
-    //let active: Bool
     var initiative: Int = 0
 }
 

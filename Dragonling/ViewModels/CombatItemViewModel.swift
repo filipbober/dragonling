@@ -9,19 +9,16 @@
 import Foundation
 
 final class CombatItemViewModel: ObservableObject, Identifiable {
-
+    
     @Published private(set) var item: CombatItem
-    //let id = UUID()
-    //@Published var name: String
-    //@Published var initiative: Int = 0
-
+    
     init(item: CombatItem) {
         self.item = item
-
+        
         name = item.name
         initiative = item.initiative
     }
-
+    
     var id: UUID {
         return item.id
     }
@@ -35,7 +32,7 @@ final class CombatItemViewModel: ObservableObject, Identifiable {
             item.name = newValue.capitalized
         }
     }
-
+    
     var initiative: Int {
         get {
             return item.initiative

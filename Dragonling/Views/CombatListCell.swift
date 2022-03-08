@@ -66,7 +66,7 @@ struct CombatListCell: View {
             }
         }
     }
-
+    
     var reactionButton: some View {
         Group {
             if !combatListCellVM.usedReaction {

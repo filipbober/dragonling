@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct CombatItemDetailView: View {
-
+    
     @ObservedObject var combatItemDetailVM: CombatItemDetailViewModel
     @State private var editMode = EditMode.inactive
     @Binding var needRefresh: Bool
-
+    
     var body: some View {
         ZStack {
             VStack {
@@ -22,24 +22,19 @@ struct CombatItemDetailView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 name
-                //.navigationBarItems(trailing: EditButton())
-                //Button(action: { self.combatItemDetailVM.initiative += 1 }) {
                 //https://applandeo.com/blog/swiftui-two-way-binding-and-more/
-                //Button(action: { self.combatItemDetailVM.itemVm.initiative += 1 }) {
                 Button(action: {
-                        self.combatItemDetailVM.initiative += 1
-                        self.needRefresh = true
-                        //self.combatItemDetailVM.item.initiative += 1
+                    self.combatItemDetailVM.initiative += 1
+                    self.needRefresh = true
                 }) {
                     Text("Rename")
                 }
-                //Text("initiative: \(self.combatItemDetailVM.itemVm.initiative)")
+                
                 Text("initiative: \(self.combatItemDetailVM.initiative)")
-                //Text("initiative2: \(self.combatItemDetailVM.item.initiative)")
                 Text("itemId: \(combatItemDetailVM.itemVm.id)")
-
+                
                 Spacer()
-
+                
                 Text("This is detail view")
                 Spacer()
             }
@@ -47,7 +42,7 @@ struct CombatItemDetailView: View {
         .navigationBarItems(trailing: EditButton())
         .environment(\.editMode, $editMode)
     }
-
+    
     var name : some View {
         Group {
             if editMode == .active {

@@ -9,28 +9,24 @@
 import SwiftUI
 
 struct CombatListView: View {
-
+    
     @ObservedObject var combatListVM: CombatListViewModel
     @State var needRefresh: Bool = false
-
+    
     private var clickedId = UUID()
-
-    // TODO Use @StateObject in the list instead of the @ObservableObject
-    // @ObservedObject var something = SomeType() should almost always used @StateObject instead
-    // create your object somewhere using @StateObject, then use it in other views with @ObservedObject
-
+    
     init(combatListViewModel: CombatListViewModel) {
         self.combatListVM = combatListViewModel
-
+        
         // Will refresh every time the View is rebuilt - when ObservedObject changes
         combatListVM.refreshActiveItems()
     }
-//https://stackoverflow.com/questions/64526552/swiftui-how-to-update-a-variable-transiting-from-a-parent-view-only-when-wanted
+    //https://stackoverflow.com/questions/64526552/swiftui-how-to-update-a-variable-transiting-from-a-parent-view-only-when-wanted
     var body: some View {
         List {
             ForEach(self.combatListVM.cellVms, id:\.id) { cellVm in
                 VStack {
-                    // Maybe all view models should operate on CombatItem structs?
+                    // TODO: Maybe all view models should operate on CombatItem structs?
                     NavigationLink(destination: CombatItemDetailView(combatItemDetailVM: CombatItemDetailViewModel(itemVm: cellVm.itemVm), needRefresh: $needRefresh))
                     {
                         CombatListCell(combatListCellVM: cellVm, endTurnAction: { _ in
@@ -46,7 +42,7 @@ struct CombatListView: View {
             .onAppear(perform: {
                 combatListVM.refreshActiveItems()
             })
-
+            
             Button(action: {
                 self.nextRound()
             }) {
@@ -56,35 +52,35 @@ struct CombatListView: View {
             .disabled(!self.combatListVM.allActivated())
         }
     }
-
+    
     private func delete(at offsets: IndexSet) {
         self.combatListVM.remove(at: offsets)
     }
-
+    
     private func move(from source: IndexSet, to destination: Int) {
         self.combatListVM.move(from: source, to: destination)
     }
-
+    
     private func add() {
         self.combatListVM.add()
     }
-
+    
     private func endTurn(for id: UUID) {
         self.combatListVM.endTurn(for: id)
     }
-
+    
     private func delay() {
         self.combatListVM.delay()
     }
-
+    
     private func useReaction(for id: UUID) {
         self.combatListVM.useReaction(for: id)
     }
-
+    
     private func nextRound() {
         self.combatListVM.nextRound()
     }
-
+    
 }
 
 struct CombatListView_Previews: PreviewProvider {
